@@ -1,3 +1,4 @@
+include ':MethodsAndParams'
 include ':LearnJava'
 include ':app'
 rootProject.name = "JavaPlayground"
