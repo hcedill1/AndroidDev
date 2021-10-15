@@ -1,3 +1,4 @@
+include ':lib'
 include ':MethodsAndParams'
 include ':LearnJava'
 include ':app'
