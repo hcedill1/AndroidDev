@@ -1,3 +1,6 @@
+include ':Hashmap'
+include ':JavaObjectsAsMethodParam'
+include ':DataStructures'
 include ':InheritanceOnly'
 include ':ContructorInheritance'
 include ':CreatingClasses'
