@@ -1,3 +1,4 @@
+include ':AndroidArchitecture'
 include ':SortingArrays'
 include ':Hashmap'
 include ':JavaObjectsAsMethodParam'
