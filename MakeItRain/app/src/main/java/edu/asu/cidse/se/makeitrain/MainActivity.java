@@ -1,12 +1,14 @@
 package edu.asu.cidse.se.makeitrain;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     //private Button makeItRain;
     // private Button showInfo;
     private TextView moneyValue;
-
+    private TextView celebrationOutTxt;
     private int moneyCounter;
 
 
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //makeItRain = findViewById(R.id.buttonMakeItRain);
         moneyValue = findViewById(R.id.moneyValue);
+        celebrationOutTxt = findViewById(R.id.celebration_text);
+
         //differnt view of lambda
 //        makeItRain.setOnClickListener(v -> {
 //            //TAG is any id that you are trying to attach to this console log
@@ -36,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 //            Log.d("MainActivity", "onClick: Make It Rain!!");
 //
 //        });
-
 
     }
 
@@ -50,9 +53,18 @@ public class MainActivity extends AppCompatActivity {
         //this will allow you format the type of currency dollar
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
         moneyCounter = moneyCounter + 1000;
+        moneyValue.setText(String.valueOf(numberFormat.format(moneyCounter)));
+        //this will be setting the color when the number value reaches over 20000
+        if(moneyCounter >= 20000){
+            celebrationOutTxt.setText(R.string.celebrationOut);
+            //this set number value to turn into white
+            moneyValue.setTextColor(ContextCompat.getColor(MainActivity.this,
+                    R.color.white));
+            Log.d("MainActivity","Higher than 20000, " + moneyCounter );
+        }
         //so why does this not work "moneyValue.setText(moneyCounter);" its because the setText only wants to return
         //a text value NOT an integer. what we can do is use valueof that will convert int to a string.
-        moneyValue.setText(String.valueOf(numberFormat.format(moneyCounter)));
+
         Log.d("MainActivity", "onClick Make it Rain " + moneyCounter);
     }
 
@@ -70,4 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
 }
