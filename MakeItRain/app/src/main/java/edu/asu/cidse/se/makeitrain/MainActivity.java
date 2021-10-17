@@ -14,12 +14,20 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * So we have various classes in order to get the layours and android app set up
+ * Main class or Parent class will be View
+ * which will branch out to TextView, ImageView, and ViewGroup
+ * which then ViewGroup has (Linear Layout, ConstraintLayout, FrameLayout) -> Framelayout has (ScrollView)
+ * TextView has (Buttons,Edit Text)
+ */
 public class MainActivity extends AppCompatActivity {
 
     //private Button makeItRain;
     // private Button showInfo;
     private TextView moneyValue;
     private TextView celebrationOutTxt;
+    private Button newButton;
     private int moneyCounter;
 
 
@@ -27,11 +35,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.another_resource);
         //makeItRain = findViewById(R.id.buttonMakeItRain);
         moneyValue = findViewById(R.id.moneyValue);
+        //from second layout file
+        newButton = findViewById(R.id.newButtonID);
         celebrationOutTxt = findViewById(R.id.celebration_text);
 
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("another resource xml file","onClick Hola");
+            }
+        });
         //differnt view of lambda
 //        makeItRain.setOnClickListener(v -> {
 //            //TAG is any id that you are trying to attach to this console log

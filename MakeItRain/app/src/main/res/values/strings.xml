@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MakeItRain</string>
+    <string name="app_name">Make It Rain</string>
     <string name="you_have">You Have:</string>
     <string name="make_it_rain">Make It Rain</string>
     <string name="show_info">Show Info</string>
@@ -7,4 +7,5 @@
     <string name="testHello">Hello</string>
     <string name="app_info">Ger rich quick</string>
     <string name="celebrationOut">NICE YOU RICH AF!!!!!</string>
+    <string name="say_something">Say Something</string>
 </resources>
