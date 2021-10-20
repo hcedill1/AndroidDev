@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--suppress AndroidDomInspection -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name = "bio"
+            type = "edu.asu.cidse.se.bio.data.Bio"/>
+    </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -29,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/name" />
+            android:text="@{bio.name}" />
 
         <EditText
             android:id="@+id/enter_hobbies"
@@ -45,7 +52,6 @@
             android:id="@+id/done_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addHobbies"
             android:text="@string/done_bttn_text" />
 
         <TextView
@@ -53,7 +59,9 @@
             style="@style/generalStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:text="@{bio.hobbies"/>
+
 
         <ScrollView
             android:layout_width="match_parent"
