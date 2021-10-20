@@ -9,8 +9,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import edu.asu.cidse.se.bio.databinding.ActivityMainBinding;
 
+public class MainActivity extends AppCompatActivity {
+    //Activity Main binding works almost the same way as findMyId but less expensive
+    private ActivityMainBinding binding;
     private EditText enterHobbies;
     private TextView hobbies;
 
