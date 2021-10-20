@@ -4,25 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/layoutMargin"
     android:background="#FF5722"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#FF5722"
+        android:contentDescription="@string/image_description"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/textView2"
+        style="@style/nameStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/name"
-        style="@style/nameStyle" />
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/enter_hobbies"
+        style="@style/generalStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hobbies_text"
+        android:inputType="textPersonName"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addHobbies"
+        android:text="@string/done_bttn_text" />
+
+    <TextView
+        android:id="@+id/hobbies_text"
+        style="@style/generalStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,10 +57,11 @@
 
         <TextView
             android:id="@+id/my_bio"
+            style=""
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/my_bio"
-            style="@style/generalStyle" />
+            android:lineSpacingMultiplier="1.4"
+            android:text="@string/my_bio" />
     </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
