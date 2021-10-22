@@ -1,0 +1,26 @@
+API- Application Programming interface -> if you look at an application doesnt have to be mobile
+it can be any application you build. You are trying to make connections remotely to get info
+ The application is the front part the whole process. there is a lot of thing that happen in order
+ for the app to work.
+
+ The application that useres can interact with, below the level we have the API and below API is the server
+ We have applications and Back end Server. so In order to fech information we have an API. Api is in between
+ Application and Back Server. It is bidirectional. So an API can be JSON or XML these are formats,
+ so what the application says hey i need something from the backend and the backend is already set up
+ to send the data back to the application but in a format that is easier for the application to
+ understand or parse.
+
+ So it was mentioned in order to understand Android we have to understand Androids api, but what does that mean?
+Its the same thing such as passing data back and forth, but not in the terms of networking and back end servers
+what we are talking talking about is the documentation of andriod classes and android software development kit
+but now we are learning about activity class, in order to learn how to create a window and frame. API in any
+context is just a way in which developers we have to connect which underneath stuff or backend.
+
+Remote API: HTTP Protocol Server is complicated, we have to do a little bit more work in order to parse
+the data from a server or any remote data. Why do we bother to do that? We can leverage which was already created
+such as the android sdk, which is a library. The SDK is a library of classes and packages and be able to invoke the API to
+use all of those classes, to abtstract information.
+
+What is a library? A library is something that has been taken away all of its complexity of doing something.
+In order for people to have that class to do something. Any Framework to build something can also be considered al ibrary
+becuase it helps to abstract information in a proper way.
