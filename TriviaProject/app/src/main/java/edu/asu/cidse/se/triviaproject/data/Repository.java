@@ -78,6 +78,7 @@ public class Repository {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("Repo","Error could not grab data");
 
             }
         });

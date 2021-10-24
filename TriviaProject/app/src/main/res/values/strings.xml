@@ -5,4 +5,8 @@
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="next_button">Next</string>
+    <string name="placeHolder">Hello World this is where question is going to go</string>
+    <string name="formated">Question:%d/%d</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="incorrect_answer">Incorrect Answer</string>
 </resources>
