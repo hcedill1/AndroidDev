@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(true);
+                updateQuestion();
             }
         });
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
-
+                updateQuestion();
             }
         });
 
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             snackMessageId = R.string.correct_answer;
         }else{
             snackMessageId = R.string.incorrect_answer;
+            shakeAnimation();
         }
 
         Snackbar.make(binding.cardView,snackMessageId,Snackbar.LENGTH_SHORT).show();
@@ -100,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
         String question = questionList.get(currentQuestionIndex).getAnswer();
         binding.questionTextView.setText(question);
         updateCounter((ArrayList<Question>) questionList);
+    }
+
+    private void shakeAnimation(){
+        Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake_animation);
+        binding.cardView.setAnimation(shake);
     }
 
 }
