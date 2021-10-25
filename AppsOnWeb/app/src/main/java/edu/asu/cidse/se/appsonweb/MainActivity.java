@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     String apiUrl = "https://jsonplaceholder.typicode.com/todos";
     String getApiUrl = "https://jsonplaceholder.typicode.com/todos/1";
     //instance variable
+    //RequestQueue queue;
+    //We are doing singleton version of request queue
     RequestQueue queue;
 
     @Override
@@ -49,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         //it queues out request and managers information on how they are going to be executed
         //this has to be inside onCreate in order to make request
         //knows how to queue request in a timely manner
-        queue = Volley.newRequestQueue(this);
+        //queue = Volley.newRequestQueue(this);
+        queue = MySingleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
 
-        //jsonObjectRequ();
+        jsonObjectRequ();
 
 
         //jsonArrayObject(queue);
@@ -81,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("jsonObject","Error");
             }
         });
-
+        //We are going to be using the singleton example in order for classes not to be declared
+        //continuously
+        //queue.add(jsonObjectRequest);
         queue.add(jsonObjectRequest);
     }
 

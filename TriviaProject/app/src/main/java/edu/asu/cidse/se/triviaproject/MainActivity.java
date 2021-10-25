@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
@@ -29,9 +31,12 @@ import edu.asu.cidse.se.triviaproject.databinding.ActivityMainBinding;
 import edu.asu.cidse.se.triviaproject.model.Question;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String MESSAGE_ID = "high_score";
     private ActivityMainBinding binding;
     //this is going to be keeping the current question index.
     private int currentQuestionIndex = 0;
+    private int keepScore = 0;
+    private int highScore = 0;
     List<Question>  questionList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateQuestion();
                 currentQuestionIndex = (currentQuestionIndex + 1) % questionList.size();
+
+                updateQuestion();
+
 
             }
         });
@@ -86,24 +93,63 @@ public class MainActivity extends AppCompatActivity {
 
         if(check == answer){
             snackMessageId = R.string.correct_answer;
+            keepScore = keepScore + 1000;
+
         }else{
             snackMessageId = R.string.incorrect_answer;
+            keepScore = keepScore - 500;
             shakeAnimation();
         }
 
+        limitScore(keepScore);
+        checkHighScore();
+
         Snackbar.make(binding.cardView,snackMessageId,Snackbar.LENGTH_SHORT).show();
+        Log.d("MainActivity", "Score " + keepScore);
 
     }
+
+    private void limitScore(int score){
+        if(score < 0) {
+            keepScore = 0;
+        }
+    }
+
+    private void checkHighScore(){
+        if(keepScore > highScore){
+            highScore = keepScore;
+        }
+        SharedPreferences sharedPreferences = getSharedPreferences(MESSAGE_ID,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("highScore", highScore);
+        editor.apply();
+
+        SharedPreferences getSharedData = getSharedPreferences(MESSAGE_ID,MODE_PRIVATE);
+        int value = getSharedData.getInt("highScore",0);
+        binding.showScoreTextView.setText(String.format("High Score: %d",value));
+
+        //binding.highScoreTextView.setText(String.format("High Score: %d",highScore));
+        Log.d("MainActivity", "High Score: " + highScore);
+    }
+
 
     private void updateCounter(ArrayList<Question> questionArrayList) {
         binding.textViewOutOf.setText(String.format(getString(R.string.formated), currentQuestionIndex,
                 questionArrayList.size()));
     }
 
+    private void updateScore(){
+        SharedPreferences sharedPreferences = getSharedPreferences(MESSAGE_ID, MODE_PRIVATE);
+
+        binding.showScoreTextView.setText(String.format("Score: %d", keepScore));
+
+    }
+
     private void updateQuestion(){
         String question = questionList.get(currentQuestionIndex).getAnswer();
         binding.questionTextView.setText(question);
         updateCounter((ArrayList<Question>) questionList);
+        updateScore();
     }
 
     private void shakeAnimation(){
